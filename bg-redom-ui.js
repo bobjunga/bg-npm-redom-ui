@@ -101,10 +101,12 @@ export class MutexToolGroup {
 
 // A panel of controls to manipulate a bg-scriptProjectDev dependancy graph
 export class Panel {
-	constructor() {
+	constructor(parent) {
 		this.el = el("div.atom-cyto-cntrPanel")
 		this.cntrls = [];
-    }
+		if (parent && typeof parent.rootElement == "Object")
+			mount(parent.rootElement, this.el)
+	}
 
 	add(cntr) {
 		this.cntrls.push(cntr);
